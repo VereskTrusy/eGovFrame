@@ -4,4 +4,5 @@
 <sqlMapConfig>
 	<sqlMap resource="egovframework/sqlmap/example/sample/EgovSample_Sample_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/sample/Dept_SQL.xml"/>
+	<!-- dept_SQL.xml 을 Dept_SQL로 변경함 -->
 </sqlMapConfig>

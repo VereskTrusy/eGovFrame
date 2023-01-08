@@ -8,7 +8,15 @@
 	<!-- deptVO에 데이터가 담겨있기 때문에 VO 설정 해줌 -->
 
 	<insert id="deptDAO.InsertDept">
-		INSERT INTO dept(deptno,dname,loc) VALUES(#deptno#,#dname#,#loc#)
+		<![CDATA[
+		INSERT INTO dept
+			( deptno
+			, dname
+			, loc ) 
+		VALUES
+			( #deptno#
+			, #dname#
+			, #loc# )]]>
 	</insert>
-
+	<!-- Insert문 대문자로 변경함, <![CDATA[]]>:쿼리문감싸기,xml로 처리하지 말아라 라는거 -->
 </sqlMap>
