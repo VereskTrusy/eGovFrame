@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import egovframework.example.sample.service.DeptVO;
 
 @Repository("deptDAO")
-public class DeptDAO extends EgovAbstractDAO{
+public class DeptDAO extends EgovAbstractDAO {
 
 	public String InsertDept(DeptVO vo) throws Exception {
 
@@ -16,3 +16,4 @@ public class DeptDAO extends EgovAbstractDAO{
 	
 
 }
+// 나중에 연결고리 생각해보자

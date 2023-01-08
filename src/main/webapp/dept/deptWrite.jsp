@@ -19,7 +19,7 @@ table {
 }
 th,td {
 	boder:1px solid #dddddd; /* 회색 */
-	padding:8px;
+	padding:8px; /* 약간의 간격 */
 }
 tr:nth-child(even) {
   background-color: #dddddd;
@@ -32,7 +32,7 @@ tr:nth-child(even) {
 <h2>부서관리</h2>
 
 <form name="frm" method="post" action="deptWriteSave.do">
-
+<!-- action 에 화면 전환 될 수 있도록 deptWriteSave.do 기입 -->
 <table>
 	<tr>
 		<th>부서번호</th>

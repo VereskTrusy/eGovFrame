@@ -47,6 +47,8 @@ import org.springframework.stereotype.Service;
  *  Copyright (C) by MOPAS All right reserved.
  */
 
+// Impl 만들때 @Service("") anotation 써줘야함
+// extends EgovAbstractServiceImpl 최상의 클래스 상속 받아야함
 @Service("sampleService")
 public class EgovSampleServiceImpl extends EgovAbstractServiceImpl implements EgovSampleService {
 

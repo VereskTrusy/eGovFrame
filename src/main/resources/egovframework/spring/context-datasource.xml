@@ -29,15 +29,18 @@
     
     <!-- oracle (POM에서 commons-dbcp, ojdbc(라이센스 사항으로 별도로 배포되지 않음) 관련 라이브러리 설정) -->
     <!-- 수정 사항 표기 -->
-    <!-- id="dataSource" 의 id 이름은 xml 상에서 중복이 되면 안된다 -->
-    <!-- class="org.apache.commons.dbcp2.BasicDataSource" 의 dbcp2 를 dbcp로 수정 -->
-    <!-- value="jdbc:oracle:thin:@127.0.0.1:1521:example" 의 
+    <!-- 
+    id="dataSource" 의 id 이름은 xml 상에서 중복이 되면 안된다
+    class="org.apache.commons.dbcp2.BasicDataSource" 의 dbcp2 를 dbcp로 수정
+    value="jdbc:oracle:thin:@127.0.0.1:1521:example" 의 
     port변호 1521을 1522(실제 할당한 포트 번호) 로 수정
-    databasename 인 example 을 xe(실제 설정한 데이터베이스이름) 로 수정-->
+    databasename 인 example 을 xe(실제 설정한 데이터베이스이름) 로 수정
+    -->
     <!-- 
     name="username" value="scott"
     name="password" value="123456" 의
-    value 값을 데이터베이스 아이디와 비번을 입렵-->
+    value 값을 데이터베이스 아이디와 비번을 입렵
+    -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1522:xe" />

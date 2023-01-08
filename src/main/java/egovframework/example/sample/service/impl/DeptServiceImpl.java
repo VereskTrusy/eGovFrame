@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import egovframework.example.sample.service.DeptService;
 import egovframework.example.sample.service.DeptVO;
 
-
+// implements : 인터페이스 상속 받는거
 @Service("deptService")
 public class DeptServiceImpl extends EgovAbstractServiceImpl implements DeptService {
 
@@ -16,9 +16,9 @@ public class DeptServiceImpl extends EgovAbstractServiceImpl implements DeptServ
 	private DeptDAO deptDAO;
 	
 	@Override
-	public String InsertDept(DeptVO vo) throws Exception {
+	public String InsertDept(DeptVO vo) throws Exception { // 자동완성기능 활용 할것
 		
-		return deptDAO.InsertDept(vo);
+		return deptDAO.InsertDept(vo); // DAO랑 연결
 	}
 
 }

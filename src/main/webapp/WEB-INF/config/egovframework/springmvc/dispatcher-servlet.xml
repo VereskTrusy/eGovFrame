@@ -43,11 +43,29 @@
             </props>
         </property>
     </bean>
-
+	<!-- jsp 파일 경로 변경
+	기존경로 : myproject2/src/main/webapp/WEB-INF/jsp/egovframework/example/sample/egovSampleList.jsp
+	신규경로 : myproject2/src/main/webapp/WEB-INF/
+	기존 jsp 파일 경로에서 경로 단순화 시키기 위해 dispatcher-servlet.xml 의 
+	p:prefix="/" 에서 할 수 있다, / 위치는 webapp 임.
+	
+	컨트롤러에서 jsp 파일이름 기입시 확장자를 표기하지 않는데
+	dispatcher-servlet.xml 의
+	p:suffix=".jsp" 에서 확장자를 선언 해주기에 표기하지 않으며
+	해당 설정 또한 여기서 진행한다.
+	-->
+	<!-- 기존 설정 상태 S -->
+	<!-- <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
+	    p:viewClass="org.springframework.web.servlet.view.JstlView"
+	    p:prefix="/WEB-INF/jsp/egovframework/example/" p:suffix=".jsp"/> -->
+	<!-- 기존 설정 상태 E -->
+	
+	<!-- 신규 설정 상태 S -->
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
 	    p:prefix="/" p:suffix=".jsp"/>
-
+	<!-- 신규 설정 상태 E -->
+	
     <!-- For Pagination Tag -->
     <bean id="imageRenderer" class="egovframework.example.cmmn.web.EgovImgPaginationRenderer"/>
 
