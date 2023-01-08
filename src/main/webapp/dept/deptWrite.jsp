@@ -51,6 +51,7 @@ tr:nth-child(even) {
 		<button type="submit">저장</button>
 		</th>
 	</tr>
+	<!-- Github 연동 축하 주석 달기 23.01.08 2번째 커밋 축포 발싸 -->
 </table>
 
 </form>
