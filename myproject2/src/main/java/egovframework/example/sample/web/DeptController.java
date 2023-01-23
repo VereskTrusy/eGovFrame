@@ -15,14 +15,19 @@ import egovframework.example.sample.service.DeptVO;
 @Controller
 public class DeptController {
 	
+	// 서비스
 	@Resource(name = "deptService")
 	private DeptService deptService; 
 	
+	
+	
+	// 부서입력
 	@RequestMapping(value = "/deptWrite.do")
 	public String deptWrite() {
 		return "dept/deptWrite";
 	}
 	
+	// 부서입력 - 저장
 	@RequestMapping(value = "/deptWriteSave.do")
 	public String InsertDept(DeptVO vo) throws Exception {
 		
@@ -42,6 +47,7 @@ public class DeptController {
 		return "";
 	}
 
+	// 부서목록
 	@RequestMapping(value="/deptList.do")
 	public String selectDeptList(DeptVO vo, ModelMap model) throws Exception { // modelmap : 자바의 데이터를 jsp로 전달해주는 역활
 		
@@ -52,6 +58,7 @@ public class DeptController {
 		return "dept/deptList";
 	}
 	
+	//부서목록 - 상세화면
 	@RequestMapping(value="/deptDetail.do")
 	public String selectDeptDetail(int deptno, ModelMap model) throws Exception {
 		
@@ -62,6 +69,7 @@ public class DeptController {
 		return "dept/deptDetail";
 	}
 	
+	// 부서목록 - 상세화면 - 삭제
 	@RequestMapping(value="/deptDelete.do")
 	public String deleteDept(int deptno) throws Exception {
 		int result = deptService.deleteDept(deptno);
@@ -69,6 +77,29 @@ public class DeptController {
 			System.out.println("삭제완료");
 		}else {
 			System.out.println("삭제실패");
+		}
+		
+		return "";
+	}
+	
+	// 부서목록 - 상세화면 - 수정
+	@RequestMapping(value="/deptModifyWrite.do")
+	public String selectDeptModify(int deptno, ModelMap model) throws Exception {
+		
+		DeptVO vo = deptService.selectDeptDetail(deptno);
+		model.addAttribute("deptVO", vo);
+		
+		return "dept/deptModifyWrite";
+	}
+	
+	// 부서목록 - 상세화면 - 수정 - 저장
+	@RequestMapping(value="/deptModifySave.do")
+	public String updateDept(DeptVO vo) throws Exception {
+		int result = deptService.updateDept(vo);
+		if(result == 1) { // 정상
+			System.out.println("수정완료");
+		} else {
+			System.out.println("수정실패");
 		}
 		
 		return "";

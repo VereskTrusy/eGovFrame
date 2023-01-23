@@ -47,6 +47,19 @@
 		WHERE DEPTNO=#deptno#
 	</delete>
 	
+	<update id="deptDAO.updateDept">
+		UPDATE DEPT 
+		SET 
+			DNAME=#dname#
+			, LOC=#loc#
+		WHERE 
+			DEPTNO=#deptno#
+	</update>
+	
+	
+	
+	
+	
 	<!-- 
 	<update id="sampleDAO.updateSample">
 		<![CDATA[

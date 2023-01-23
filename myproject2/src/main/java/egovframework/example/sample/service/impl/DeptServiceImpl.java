@@ -17,6 +17,8 @@ public class DeptServiceImpl extends EgovAbstractServiceImpl
 		@Resource(name="deptDAO")
 		private DeptDAO deptDAO;
 		
+		
+		
 		@Override
 		public String InsertDept(DeptVO vo) throws Exception {
 			return deptDAO.InsertDept(vo);
@@ -35,6 +37,11 @@ public class DeptServiceImpl extends EgovAbstractServiceImpl
 		@Override
 		public int deleteDept(int deptno) throws Exception {
 			return deptDAO.deleteDept(deptno);
+		}
+
+		@Override
+		public int updateDept(DeptVO vo) throws Exception {
+			return deptDAO.updateDept(vo);
 		}
 		
 }

@@ -14,4 +14,6 @@ public interface DeptService {
 	// returnType : SQL에서 insert, update, delete
 	// 처리가 되는 것들은 결과를 컨트롤러에 리턴해준다(몇개를 삭제했는지)
 	// 하나의 데이터가 삭제되면 1이라는 숫자를 컨트롤러에 반환
+	public int updateDept(DeptVO vo) throws Exception;
+	// 업데이트한 갯수 리턴
 }
