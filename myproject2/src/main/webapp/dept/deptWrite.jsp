@@ -1,24 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!-- JSTL 태그 라이브러리 S-->
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions"	prefix = "fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core"		prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/xml"			prefix = "x" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt"			prefix = "fmt" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/sql"			prefix = "sql" %>
+<!-- JSTL 태그 라이브러리 E-->
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>deptWrite.jsp</title>
+	<meta charset="UTF-8">
+	<title>deptWrite.jsp</title>
 </head>
-<style>
-table {
-	width: 400px;
-	border-collapse: collapse; /* cell 간격 없앰*/
-}
-th,td {
-	border: 1px solid #cccccc;
-	padding: 5px;
-}
-</style>
-
-
+	<style>
+	table {
+		width: 400px;
+		border-collapse: collapse; /* cell 간격 없앰*/
+	}
+	th,td {
+		border: 1px solid #cccccc;
+		padding: 5px;
+	}
+	</style>
 <body>
+
 <form name="frm" method="post" action="deptWriteSave.do">
 <table>
 	<tr>

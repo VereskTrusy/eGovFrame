@@ -31,11 +31,11 @@ public class DeptController {
 	@RequestMapping(value = "/deptWriteSave.do")
 	public String InsertDept(DeptVO vo) throws Exception {
 		
-		System.out.println("콘솔 메시지 S");
+		//System.out.println("콘솔 메시지 S");
 		System.out.println("부서번호 : " + vo.getDeptno());
 		System.out.println("부서이름 : " + vo.getDname());
 		System.out.println("부서위치 : " + vo.getLoc());
-		System.out.println("콘솔 메시지 E");
+		//System.out.println("콘솔 메시지 E");
 		
 		String result = deptService.InsertDept(vo);
 		if(result == null) { // ok
