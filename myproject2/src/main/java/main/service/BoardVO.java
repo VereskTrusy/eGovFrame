@@ -1,8 +1,11 @@
 package main.service;
 
+/*
+ * 일반게시판 - 게시판항목의 값이 담길 VO(Value Object)
+ */
 public class BoardVO {
 	
-	// 접근지정자 주의
+	/* 접근지정자 주의 */
 	private int unq;		// ??
 	private String title;	// 제목
 	private String pass;	// 비밀번호
@@ -12,9 +15,10 @@ public class BoardVO {
 	public String rdate;	// 작성일
 	
 
-	// get/set 메소드 처리
-	
-	// unq get/set
+	/*
+	 * get/set 메소드 처리
+	 */
+	/* unq get/set */
 	public int getUnq() {
 		return unq;
 	}
@@ -22,7 +26,7 @@ public class BoardVO {
 		this.unq = unq;
 	}
 	
-	// title get/set
+	/* title get/set */
 	public String getTitle() {
 		return title;
 	}
@@ -30,7 +34,7 @@ public class BoardVO {
 		this.title = title;
 	}
 	
-	// pass get/set
+	/* pass get/set */
 	public String getPass() {
 		return pass;
 	}
@@ -38,7 +42,7 @@ public class BoardVO {
 		this.pass = pass;
 	}
 	
-	// name get/set
+	/* name get/set */
 	public String getName() {
 		return name;
 	}
@@ -46,7 +50,7 @@ public class BoardVO {
 		this.name = name;
 	}
 	
-	// content get/set
+	/* content get/set */
 	public String getContent() {
 		return content;
 	}
@@ -54,7 +58,7 @@ public class BoardVO {
 		this.content = content;
 	}
 	
-	// hits get/set
+	/* hits get/set */
 	public int getHits() {
 		return hits;
 	}
@@ -62,7 +66,7 @@ public class BoardVO {
 		this.hits = hits;
 	}
 	
-	// rdate get/set
+	/* rdate get/set */
 	public String getRdate() {
 		return rdate;
 	}

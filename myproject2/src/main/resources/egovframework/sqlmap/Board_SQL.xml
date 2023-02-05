@@ -7,7 +7,7 @@
 	<typeAlias  alias="BoardVO" type="main.service.BoardVO"/>
 
  	
-	<insert id="boardDAO.insertNBoard" >
+	<insert id="boardDAO.insertNBoard">
 			INSERT INTO nboard(
 				unq,
 				title,
@@ -25,5 +25,36 @@
 				0,
 				sysdate)
 	</insert>
-
+	
+	<!-- 일반게시판 - 리스트 출력 SQL문
+	전달해주어야할 클래스의 형태가 egovMap이 List와 같기때문에
+	갖다 쓰기만 하면된다.
+	unq, : 상세 보기등 활용하기 때문에 SELECT 항목에 포함
+	title, : 제목
+	pass, : 패스워드는 출력 해주지 않는다. SELECT문에서도 제거함
+	name, : 
+	content, : 목록에서는 내용을 출력해주지 않는다. SELECT문에서도 제거함
+	hits, : 
+	rdate : -->
+	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
+			
+	<![CDATA[	SELECT b.* FROM (
+					SELECT rownum rn, a.* FROM (
+						SELECT	
+								unq,
+								title,
+								name,
+								content,
+								hits,
+								to_char(rdate, 'yyyy-mm-dd') as rdate
+						FROM
+								nboard
+				
+						ORDER BY unq DESC
+					) a 
+				) b
+				WHERE
+					rn >= 1 and rn <= 5
+	]]>
+	</select>
 </sqlMap>

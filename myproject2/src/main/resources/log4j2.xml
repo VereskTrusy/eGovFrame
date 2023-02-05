@@ -6,7 +6,10 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="java.sql" level="INFO" additivity="false">
+    	<!-- 개발 시 SQL 로그 나오게하기 level을 DEBUG로 변경 해주면 SQL문 나옴
+    		<Logger name="java.sql" level="INFO" additivity="false">
+    	 -->
+        <Logger name="java.sql" level="DEBUG" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         <Logger name="egovframework" level="DEBUG" additivity="false">
