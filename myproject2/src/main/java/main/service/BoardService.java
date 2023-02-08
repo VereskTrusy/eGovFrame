@@ -18,4 +18,8 @@ public interface BoardService {
 	 */
 	public List<?> selectNBoardList(BoardVO vo) throws Exception;
 	
+	/*
+	 * 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기
+	 */
+	public int selectNBoardTotal(BoardVO vo) throws Exception;
 }

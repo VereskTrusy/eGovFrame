@@ -41,5 +41,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardDAO.selectNBoardList(vo);
 	}
 	
+	/*
+	 * 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기
+	 */
+	@Override
+	public int selectNBoardTotal(BoardVO vo) throws Exception {
+		return boardDAO.selectNBoardTotal(vo);
+	}
+	
 	
 }

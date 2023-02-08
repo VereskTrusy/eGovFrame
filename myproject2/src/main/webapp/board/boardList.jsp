@@ -20,10 +20,10 @@
 <!-- CSS 사용 문구 -->
 <style>
 body {
-	font-size:9px;
+	font-size:12px;
 }
 button {
-	font-size:9px;
+	font-size:12px;
 }
 table {
 	width:600px;
@@ -46,10 +46,17 @@ th,td {
 
 <!-- 테이블 열 : 행번호, 제목, 글쓴이, 등록일, 조회수 -->
 <table>
+
+	<!-- controller에서 total개수 받아서 뿌리기 -->
+	<caption>
+	<div>일반게시판 목록</div>
+	<div>Total: ${total}</div>
+	</caption>
+	
 	<tr>
-		<th width="5%">번호</th>
+		<th width="10%">번호</th>
 		<th width="45%">제목</th>
-		<th width="20%">글쓴이</th>
+		<th width="15%">글쓴이</th>
 		<th width="15%">등록일</th>
 		<th width="15%">조회수</th>
 	</tr>
@@ -69,12 +76,26 @@ th,td {
 		<!-- cnt 변수 1증가 -->
 		<c:set var="cnt" value="${cnt+1}"/>
 	</c:forEach>
+	
 </table>
+
+<!-- total(데이터총개수), totalPage(페이지개수) 받아서 페이징처리하기 -->
+<div style="whidth:600px; margin-top:5px; text-align:center;">
+
+	<c:forEach var="i" begin="1" end="${totalPage}">
+	
+	<a href="boardList.do?viewPage=${i}">${i} </a> 
+	
+	</c:forEach>
+	
+</div>
 
 <!-- 글쓰기 버튼 -->
 <div style="whidth:600px; margin-top:5px; text-align:right;">
+
 	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
-</div>
+	
+</div> 
 
 </body>
 

@@ -34,6 +34,13 @@ public class BoardDAO extends EgovAbstractDAO {
 	public List<?> selectNBoardList(BoardVO vo) {
 		return (List<?>)list("boardDAO.selectNBoardList", vo);
 	}
+	
+	/*
+	 * 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기
+	 */
+	public int selectNBoardTotal(BoardVO vo) {
+		return (int)select("boardDAO.selectNBoardTotal", vo);
+	}
 
 	
 }

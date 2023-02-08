@@ -13,11 +13,39 @@ public class BoardVO {
 	public String content;	// 내용
 	public int hits;		// 조회수
 	public String rdate;	// 작성일
-	
 
+	private int viewPage = 1;	// 
+	private int startIndex = 1;	//
+	private int endIndex = 10;	//
+
+	
 	/*
 	 * get/set 메소드 처리
 	 */
+	/* startIndex get/set */
+	public int getStartIndex() {
+		return startIndex;
+	}
+	public void setStartIndex(int startIndex) {
+		this.startIndex = startIndex;
+	}
+	
+	/* endIndex get/set */
+	public int getEndIndex() {
+		return endIndex;
+	}
+	public void setEndIndex(int endIndex) {
+		this.endIndex = endIndex;
+	}
+	
+	/* viewPage get/set */
+	public int getViewPage() {
+		return viewPage;
+	}
+	public void setViewPage(int viewPage) {
+		this.viewPage = viewPage;
+	}
+	
 	/* unq get/set */
 	public int getUnq() {
 		return unq;
