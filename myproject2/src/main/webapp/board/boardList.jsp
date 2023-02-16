@@ -40,19 +40,28 @@ th,td {
 	width:98%;
 	height:70px;
 }
+.div1 {
+	width:600px;
+	text-align:center;
+	font-size:15pt;
+}
+.div2 {
+	width:600px;
+	text-align:left;
+	font-size:8pt;
+}
 </style>
 
 <body>
 
+<!-- controller에서 total개수 받아서 뿌리기 -->
+<div class="div1">일반게시판 목록</div>
+<div class="div1">Total: ${total}</div>
+<div class="div2">
+	
+</div>
 <!-- 테이블 열 : 행번호, 제목, 글쓴이, 등록일, 조회수 -->
 <table>
-
-	<!-- controller에서 total개수 받아서 뿌리기 -->
-	<caption>
-	<div>일반게시판 목록</div>
-	<div>Total: ${total}</div>
-	</caption>
-	
 	<tr>
 		<th width="10%">번호</th>
 		<th width="45%">제목</th>
@@ -62,10 +71,11 @@ th,td {
 	</tr>
 	
 	<!-- 행번호 출력을 위해 cnt 변수 선언 -->
-	<c:set var="cnt" value="1"/>
+	<c:set var="cnt" value="${rowNumber}"/>
 	
 	<!-- 목록 실제 데이터, jstl 반복문 사용-->
 	<c:forEach var="result" items="${resultList}">
+	
 		<tr align="center">
 			<td><c:out value="${cnt}"/></td>
 			<td align="left"><c:out value="${result.title}"/></td>
@@ -73,8 +83,9 @@ th,td {
 			<td><c:out value="${result.rdate}"/></td>
 			<td><c:out value="${result.hits}"/></td>
 		</tr>
-		<!-- cnt 변수 1증가 -->
-		<c:set var="cnt" value="${cnt+1}"/>
+		<!-- cnt 변수 1감소 -->
+		<c:set var="cnt" value="${cnt-1}"/>
+		
 	</c:forEach>
 	
 </table>

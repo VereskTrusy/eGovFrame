@@ -56,12 +56,14 @@ public class BoardController {
 	@RequestMapping("/boardList.do")
 	public String selectNBoardList(BoardVO vo, ModelMap model) throws Exception {
 		
+		int unit = 5;
+		
 		int total = boardService.selectNBoardTotal(vo); // 총 데이터 개수
 		System.out.println("total : " + total);
 		// 11/10 = 1.1 -> cell(1.1) -> Integer2.0 -> 2
 		// 11/10 -> 정수타입결과는 1 -> 실수타입으로 변경해주어야
 		// 우리가 원하는 1.1이 나온다 -> (double)11/10 = 1.1
-		int totalPage = (int)Math.ceil((double)total/10);
+		int totalPage = (int)Math.ceil((double)total/unit);
 		System.out.println("totalPage : " + totalPage);
 		
 		int viewPage = vo.getViewPage(); // 현재 출력하려는 페이지 번호
@@ -70,9 +72,16 @@ public class BoardController {
 		// startIndex : (1-1)*10 + 1
 		// startIndex : (2-1)*10 + 1
 		
+		//
+		if(viewPage > totalPage || viewPage < 1) {
+			viewPage = 1;
+		}
 		
-		int startIndex = (viewPage-1)*10 + 1;
-		int endIndex = startIndex + (10-1);
+		int startIndex = (viewPage-1) * unit + 1; //
+		int endIndex = startIndex + (unit-1); //
+		
+		// 
+		int startRowNo =  total - ((viewPage - 1) * unit);
 		
 		vo.setStartIndex(startIndex);
 		vo.setEndIndex(endIndex);
@@ -80,6 +89,7 @@ public class BoardController {
 		List<?> list = boardService.selectNBoardList(vo);
 		System.out.println("list : " + list);
 		
+		model.addAttribute("rowNumber", startRowNo);
 		model.addAttribute("total", total);
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("resultList", list); // 받아온 list를 model에 태워서 jsp로 전송,("resultList", list) jsp에서 사용할 name, 본데이터 
