@@ -26,40 +26,45 @@
 				sysdate)
 	</insert>
 	
-	<!-- 일반게시판 - 리스트 출력 SQL문
+	<!-- 일반게시판 - 목록화면 SQL문
 	전달해주어야할 클래스의 형태가 egovMap이 List와 같기때문에
 	갖다 쓰기만 하면된다.
 	unq, : 상세 보기등 활용하기 때문에 SELECT 항목에 포함
 	title, : 제목
 	pass, : 패스워드는 출력 해주지 않는다. SELECT문에서도 제거함
-	name, : 
+	name, : 글쓴이
 	content, : 목록에서는 내용을 출력해주지 않는다. SELECT문에서도 제거함
-	hits, : 
-	rdate : -->
+	hits, : 조회수
+	rdate : 작성일
+	기본적으로 변수명(#변수#)은 노출되지 않음 노출 시키려면 해당부분 ($변수$)처리 해주면됨
+	-->
 	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
-	<![CDATA[	SELECT b.* FROM (
-					SELECT rownum rn, a.* FROM (
-						SELECT	
-								unq,
-								title,
-								name,
-								content,
-								hits,
-								to_char(rdate, 'yyyy-mm-dd') as rdate
-						FROM
-								nboard
-				
-						ORDER BY unq DESC
-					) a 
-				) b
-				WHERE
-					rn >= #startIndex# and rn <= #endIndex#
-	]]>
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
+				SELECT	unq, title, name, hits, to_char(rdate, 'yyyy-mm-dd') as rdate
+				FROM	nboard
+				<isNotNull property="searchGubun">
+					<isNotNull property="searchText">
+						WHERE $searchGubun$ LIKE '%$searchText$%'
+					</isNotNull>		
+				</isNotNull>
+				ORDER BY unq DESC
+			) a
+		) b
+		WHERE
+		rn >= $startIndex$ and rn <![CDATA[<=]]> $endIndex$
+	
 	</select>
 	
 	<!-- 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기 -->
 	<select id="boardDAO.selectNBoardTotal" resultClass="java.lang.Integer"> 
-	SELECT COUNT(*) total FROM nboard
+	SELECT COUNT(*) total 
+	FROM nboard
+	<isNotNull property="searchGubun">
+		<isNotNull property="searchText">
+			WHERE $searchGubun$ LIKE '%$searchText$%'
+		</isNotNull>
+	</isNotNull>
 	</select>
 	
 	

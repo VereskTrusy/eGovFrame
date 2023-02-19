@@ -42,6 +42,7 @@ public class BoardController {
 		
 		/*
 		 * ajax에게 결과를 전달 해주어야함, 설정필요
+		 * try catch문으로 변경필요
 		 */
 		String msg = "";
 		if(result == null) msg = "ok";
@@ -80,7 +81,7 @@ public class BoardController {
 		int startIndex = (viewPage-1) * unit + 1; //
 		int endIndex = startIndex + (unit-1); //
 		
-		// 
+		//
 		int startRowNo =  total - ((viewPage - 1) * unit);
 		
 		vo.setStartIndex(startIndex);
