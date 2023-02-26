@@ -6,7 +6,7 @@ package main.service;
 public class BoardVO {
 	
 	/* 접근지정자 주의 */
-	private int unq;		// ??
+	private int unq;		// 유니크 넘버
 	private String title;	// 제목
 	private String pass;	// 비밀번호
 	public String name;		// 작성자
@@ -120,4 +120,5 @@ public class BoardVO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+
 }

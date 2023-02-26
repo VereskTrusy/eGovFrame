@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 
 
-<!--JSP는 컨트롤러에서 보내온 데이터를 그냥은 못받기 때문에
-	JSTL 사용을 위한 라이브러리 링크 설정을 해야한다 -->
+<!--JSTL 사용을 위한 라이브러리 링크 설정 -->
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
@@ -90,7 +89,9 @@ th,td {
 	
 		<tr align="center">
 			<td><c:out value="${cnt}"/></td>
-			<td align="left"><c:out value="${result.title}"/></td>
+			<td align="left">
+				<a href="boardDetail.do?unq=${result.unq}"><c:out value="${result.title}"/></a>
+			</td>
 			<td><c:out value="${result.name}"/></td>
 			<td><c:out value="${result.rdate}"/></td>
 			<td><c:out value="${result.hits}"/></td>
