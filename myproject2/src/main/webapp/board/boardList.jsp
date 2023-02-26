@@ -43,6 +43,10 @@ th,td {
 	width:600px;
 	text-align:center;
 	font-size:15pt;
+	font-weight:bold;
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-bottom:5px;
 }
 .div2 {
 	width:600px;
@@ -52,8 +56,16 @@ th,td {
 </style>
 
 <body>
-
-<div class="div1">일반게시판 목록</div>
+	<!-- 기본 탑메뉴 간단히.. -->
+	<table>
+		<tr>
+			<th width="25%"><a href="/myproject2/">홈</a></th>
+			<th width="25%"><a href="/myproject2/boardList.do">게시판</a></th>
+			<th width="25%"><a href="/myproject2/memberWrite.do">회원가입</a></th>
+			<th width="25%"><a href="/myproject2/loginWrite.do">로그인</a></th>
+		</tr>
+	</table>
+<div class="div1">게시판 목록</div>
 <!-- controller에서 total개수 받아서 뿌리기 -->
 
 <div class="div2">Total: ${total}</div>
@@ -105,7 +117,7 @@ th,td {
 </table>
 
 <!-- total(데이터총개수), totalPage(페이지개수) 받아서 페이징처리하기 -->
-<div style="whidth:600px; margin-top:5px; text-align:center;">
+<div class="div2" style="whidth:600px; margin-top:5px; text-align:center;">
 
 	<c:forEach var="i" begin="1" end="${totalPage}">
 	
@@ -116,7 +128,7 @@ th,td {
 </div>
 
 <!-- 글쓰기 버튼 -->
-<div style="whidth:600px; margin-top:5px; text-align:right;">
+<div class="div2" style="whidth:600px; margin-top:5px; text-align:right;">
 
 	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
 	
