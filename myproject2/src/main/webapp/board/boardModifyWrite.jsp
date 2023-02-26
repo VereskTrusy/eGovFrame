@@ -1,17 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<!--JSTL 사용을 위한 라이브러리 링크 설정 -->
+<%@ taglib prefix="c"		uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"	uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="ui"		uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring"	uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn"		uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 등록 화면</title>
+<title>게시판 수정 화면</title>
 
-</head>
-
-<!-- jscipt 파일 연결 -->
-<!-- src="../script/jquery...> 간접경로 방식이 안되서, 직접경로방식으로 연결하였음  -->
+<!-- Jquery를 사용하기위한 jscript 파일 연결 -->
 <script src="/myproject2/script/jquery-1.12.4.js"></script>
 <script src="/myproject2/script/jquery-ur.js"></script>
+
+</head>
 
 <!-- CSS 사용 문구 -->
 <style>
@@ -39,19 +46,18 @@ th,td {
 </style>
 
 <script>
-$(function(){
-	
-	$("#title").val("제목입력");
-	
-});
+
 
 function fn_submit(){
 	
 	/*jquery 형식으로 작성*/
 	/*
-	- jquery 에서 #의 의미는 아이디 값을 쓸때 사용한다
+	// jquery 에서 #의 의미는 아이디 값을 쓸때 사용한다
 	#을 쓰면 해당 아이디 값을 찾는다.
-	- $.trim() 앞뒤 공백 제거해준다
+	// document.frm.title.value == ""	같은내용
+	// $("#title").val() == ""			같은내용
+	// $.trim() 앞뒤 공백 제거해준다
+	// $.trim("  aabbcc  ") => $.trim($("#title").val()) == ""
 	*/
 	$("#title").val($.trim($("#title").val())); // 앞뒤공백제거
 	if( $.trim( $("#title").val()) == "") { // 오류체크
@@ -67,43 +73,29 @@ function fn_submit(){
 		$("#pass").focus();
 		return false;
 	}
-
-		
-	/* 자바 스크립트 형식으로 작성*/
-	/*
-	if( document.frm.title.value==""){
-		alert("제목을 입력해주세요!");
-		document.frm.title.focus();
-		return false;
-	}
-	if( document.frm.pass.value==""){
-		alert("암호를 입력해주세요!");
-		document.frm.pass.focus();
-		return false;
-	}
-	*/
-	//doucument.frm.submit(); // 동기전송방식
 	
 	/* form안의 요소를 모두 갖고 있는 변수 선언*/
 	var formData = $("#frm").serialize();
-	
 	/* 비동기 전송방식의 기능을 가지고 있는 jquery의 함수*/
 	/* ajax 해야할것 : 전송타입, 전송데이터 설정, URL, 리턴타입,성공/실패 경우 설정*/
 	$.ajax({
 		type:"POST",				// 전송타입
 		data:formData,				// 전송데이터
-		url:"boardWriteSave.do",	// URL
+		url:"boardModifySave.do",	// URL
 		dataType:"text",			// 리턴 타입
-		success: function(data){	// controller -> "ok", "fail"
-			if(data == "ok"){
+		/*전송 후 세팅*/
+		success: function( result ) {	// controller result -> "1"
+			if( result == "1" ) {						// 암호 일치, 저장
 				alert("저장완료");
 				location="boardList.do";
-			} else {
-				alert("저장실패");
+			} else if( result == "-1" ) {				// 암호 불일치
+				alert("암호가 일치하지 않습니다.")
+			} else {									// 오류
+				alert("저장실패\n관리자에게 연락해주세요.");
 			}
 		},
-		error: function(){			// 장애발생
-			alert("오류발생");
+		error: function(){								// 장애발생
+			alert("오류가 발생 하였습니다.");
 		}
 	});
 }
@@ -112,17 +104,16 @@ function fn_submit(){
 
 <body>
 
-<!--
-ajax의 비동기 전송 방식의 경우 ajax에서 모두 세팅하기 때문에
-아래와 같이 form의 id 값만 남긴다 
-<form name="frm" id="frm" method="post" action="boardWriteSave.do">
- -->
-<form name="frm" id="frm">
+<form id="frm">
+
+	<input type="hidden" name="unq" value="${boardVO.unq}">
+
 	<table>
-		<caption>게시판 등록</caption>
+		<caption>게시판 수정</caption>
 		<tr>
 			<th width="20%"><label for="title">제목</label></th>
-			<td width="80%"><input type="text" name="title" id="title" class="input1"></td>
+			<td width="80%"><input type="text" name="title" id="title" class="input1"
+				value="${boardVO.title}"></td>
 		</tr>
 		<tr>
 			<th><label for="pass">암호</label></th>
@@ -130,12 +121,11 @@ ajax의 비동기 전송 방식의 경우 ajax에서 모두 세팅하기 때문�
 		</tr>
 		<tr>
 			<th><label for="name">글쓴이</label></th>
-			<td><input type="text" name="name" id="name"></td>
+			<td><input type="text" name="name" id="name" value="${boardVO.name}"></td>
 		</tr>
 		<tr>
 			<th><label for="content">내용</label></th>
-			
-			<td><input type="text" name="content" id="content" class="textarea"></td>
+			<td><textarea name="content" id="content" class="textarea">${boardVO.content}</textarea></td>
 		</tr>
 		<tr>
 			<th colspan="2">

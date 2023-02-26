@@ -4,7 +4,7 @@
 <sqlMap namespace="BoardSpace">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="BoardVO" type="main.service.BoardVO"/>
+	<typeAlias  alias="boardVO" type="main.service.BoardVO"/>
 
  	
 	<insert id="boardDAO.insertNBoard">
@@ -41,12 +41,17 @@
 	<select id="boardDAO.selectNBoardList" resultClass="egovMap">
 		SELECT b.* FROM (
 			SELECT rownum rn, a.* FROM (
-				SELECT	unq, title, name, hits, to_char(rdate, 'yyyy-mm-dd') as rdate
+				SELECT	unq, 
+						title, 
+						name, 
+						hits, 
+						to_char(rdate, 'yyyy-mm-dd') as rdate
 				FROM	nboard
+				WHERE	DEL_YN LIKE 'N'
 				<isNotNull property="searchGubun">
 					<isNotNull property="searchText">
-						WHERE $searchGubun$ LIKE '%$searchText$%'
-					</isNotNull>		
+						AND	$searchGubun$ LIKE '%$searchText$%'
+					</isNotNull>
 				</isNotNull>
 				ORDER BY unq DESC
 			) a
@@ -58,14 +63,64 @@
 	
 	<!-- 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기 -->
 	<select id="boardDAO.selectNBoardTotal" resultClass="java.lang.Integer"> 
-	SELECT COUNT(*) total 
-	FROM nboard
-	<isNotNull property="searchGubun">
-		<isNotNull property="searchText">
-			WHERE $searchGubun$ LIKE '%$searchText$%'
+		SELECT	COUNT(*) total 
+		FROM	nboard
+		WHERE	DEL_YN LIKE 'N'
+		<isNotNull property="searchGubun">
+			<isNotNull property="searchText">
+				AND $searchGubun$ LIKE '%$searchText$%'
+			</isNotNull>
 		</isNotNull>
-	</isNotNull>
 	</select>
 	
+	<!-- 일반게시판 - 목록화면 - 상세보기 -->
+	<select id="boardDAO.selectNBoardDetail" resultClass="boardVO">
+		SELECT	unq,
+				title,
+				name,
+				content,
+				hits,
+				to_char(rdate, 'yyyy-mm-dd') as rdate
+		FROM	nboard
+		WHERE	unq='$unq$'
+	</select>
+	
+	<!-- 일반게시판 - 목록화면 - 상세보기 - 조회수 증가 시키기 -->
+	<update id="boardDAO.updateNBoardHits">
+		UPDATE	nboard 
+		SET		hits=hits+1 
+		WHERE	unq='$unq$'
+	</update>
+	
+	<!-- 일반게시판 - 목록화면 - 상세보기 - 수정처리 -->
+	<update id="boardDAO.updateNBoard">
+		UPDATE	nboard 
+		SET		title = '$title$', 
+				name = '$name$', 
+				content = '$content$' 
+		WHERE	unq = '$unq$'
+	</update>
+	
+	<!-- 일반게시판 - 목록화면 - 상세보기 - 암호확인 -->
+	<select id="boardDAO.selectNBoardPass" resultClass="java.lang.Integer">
+		SELECT	COUNT(*) 
+		FROM	nboard
+		WHERE	unq='$unq$' AND pass='$pass$'
+	</select>
+	
+	<!-- delete문 사용안하고 DEL_YN컬럼의 기본값 'N'을 'Y'로 
+	변경하는 방식으로 삭제처리 함
+	<delete id="boardDAO.deleteNBoard">
+		DELETE FROM nboard
+		WHERE unq='$unq$' AND pass='$pass$'
+	</delete>
+	 -->
+	<update id="boardDAO.deleteNBoard">
+	
+		UPDATE	nboard
+		SET		DEL_YN = 'Y'
+		WHERE	unq = '$unq$' AND pass = '$pass$'
+	
+	</update>
 	
 </sqlMap>

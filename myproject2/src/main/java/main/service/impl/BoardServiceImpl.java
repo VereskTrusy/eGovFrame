@@ -48,6 +48,48 @@ public class BoardServiceImpl implements BoardService {
 	public int selectNBoardTotal(BoardVO vo) throws Exception {
 		return boardDAO.selectNBoardTotal(vo);
 	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기
+	 */
+	@Override
+	public BoardVO selectNBoardDetail(int unq) throws Exception {
+		return boardDAO.selectNBoardDetail(unq);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 조회수 증가 시키기
+	 */
+	@Override
+	public int updateNBoardHits(int unq) throws Exception {
+		return boardDAO.updateNBoardHits(unq);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 수정처리
+	 */
+	@Override
+	public int updateNBoard(BoardVO vo) throws Exception {
+		return boardDAO.updateNBoard(vo);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 삭제 - 암호확인화면
+	 */
+	@Override
+	public int selectNBoardPass(BoardVO vo) throws Exception {
+		return boardDAO.selectNBoardPass(vo);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 삭제처리
+	 */
+	@Override
+	public int deleteNBoard(BoardVO vo) throws Exception {
+		return boardDAO.deleteNBoard(vo);
+	}
+	
+	
 	
 	
 }

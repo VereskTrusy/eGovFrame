@@ -25,22 +25,60 @@ public class BoardDAO extends EgovAbstractDAO {
 	 * vo : vo객체
 	 */
 	public String insertNBoard(BoardVO vo) {
-		return (String)insert("boardDAO.insertNBoard", vo);
+		return (String) insert("boardDAO.insertNBoard", vo);
 	}
 
 	/*
 	 * 일반게시판 - 목록화면
 	 */
 	public List<?> selectNBoardList(BoardVO vo) {
-		return (List<?>)list("boardDAO.selectNBoardList", vo);
+		return (List<?>) list("boardDAO.selectNBoardList", vo);
 	}
 	
 	/*
 	 * 일반게시판 - 목록화면 - 페이징처리 - Total 갯수 얻기
 	 */
 	public int selectNBoardTotal(BoardVO vo) {
-		return (int)select("boardDAO.selectNBoardTotal", vo);
+		return (int) select("boardDAO.selectNBoardTotal", vo);
 	}
 
-	
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기
+	 */
+	public BoardVO selectNBoardDetail(int unq) {
+		return (BoardVO) select("boardDAO.selectNBoardDetail", unq);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 조회수 증가 시키기
+	 */
+	public int updateNBoardHits(int unq) {
+		return update("boardDAO.updateNBoardHits", unq);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 수정처리
+	 */
+	public int updateNBoard(BoardVO vo) {
+		return update("boardDAO.updateNBoard", vo);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 암호확인
+	 */
+	public int selectNBoardPass(BoardVO vo) {
+		return (int) select("boardDAO.selectNBoardPass", vo);
+	}
+
+	/*
+	 * 일반게시판 - 목록화면 - 상세보기 - 삭제처리
+	 */
+//	public int deleteNBoard(BoardVO vo) {
+//		return delete("boardDAO.deleteNBoard", vo);
+//	}
+	public int deleteNBoard(BoardVO vo) {
+		return update("boardDAO.deleteNBoard", vo);
+	}
+
+
 }
