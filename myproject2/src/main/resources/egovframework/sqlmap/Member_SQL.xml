@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MemberSpace">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="memberVO" type="main.service.MemberVO"/>
+	
+	<insert id="memberDAO.insertMember">
+		INSERT INTO member(
+			userid,
+			pass,
+			name,
+			birth,
+			phone,
+			gender,
+			zipcode,
+			address
+		)
+		VALUES(
+			#userid#,
+			#pass#,
+			#name#,
+			#birth#,
+			#phone#,
+			#gender#,
+			#zipcode#,
+			#address#
+		)
+	</insert>
+</sqlMap>

@@ -14,9 +14,10 @@
 		<result property="regUser" column="reg_user"/>
 	</resultMap>
 
+
 	<insert id="sampleDAO.insertSample">
 		<![CDATA[
-			INSERT INTO SAMPLE 
+			INSERT INTO SAMPLE
 				( ID
 				  , NAME
 				  , DESCRIPTION
@@ -43,7 +44,7 @@
 	
 	<delete id="sampleDAO.deleteSample">
 		<![CDATA[
-			DELETE FROM SAMPLE 
+			DELETE FROM SAMPLE
 			WHERE ID=#id#
 		]]>
 	</delete>
@@ -52,7 +53,7 @@
         <![CDATA[
             SELECT
                 ID, NAME, DESCRIPTION, USE_YN, REG_USER
-            FROM SAMPLE 
+            FROM SAMPLE
             WHERE ID=#id#
         ]]>
     </select>
@@ -70,7 +71,7 @@
 				NAME LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
 			ORDER BY ID DESC
-			LIMIT #recordCountPerPage# OFFSET #firstIndex#		
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
 	</select>
 	
 	<select id="sampleDAO.selectSampleListTotCnt" parameterClass="searchVO" resultClass="int">

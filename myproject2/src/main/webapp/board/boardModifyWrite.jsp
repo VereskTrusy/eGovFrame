@@ -30,10 +30,10 @@ button {
 }
 table {
 	width:600px;
-	boarder-collapse:callapse;
+	border-collapse:callapse;
 }
 th,td {
-	boarder:1px solid #cccccc;
+	border:1px solid #444444;
 	padding: 3px;
 }
 .input1 {

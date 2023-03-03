@@ -37,11 +37,13 @@ button {
 }
 table {
 	width:600px;
-	boarder-collapse:callapse;
+	border:1px solid #ffffff;
+	border-collapse:callapse;
+	border-top: 1px solid #444444;
 }
 th,td {
-	boarder:1px solid #cccccc;
 	padding: 3px;
+	border-bottom: 1px solid #444444;
 }
 .input1 {
 	width:98%;

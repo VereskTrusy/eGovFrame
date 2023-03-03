@@ -6,20 +6,20 @@ package main.service;
 public class BoardVO {
 	
 	/* 접근지정자 주의 */
-	private int unq;		// 유니크 넘버
-	private String title;	// 제목
-	private String pass;	// 비밀번호
-	public String name;		// 작성자
-	public String content;	// 내용
-	public int hits;		// 조회수
-	public String rdate;	// 작성일
+	private int unq;		/* 유니크 넘버 */
+	private String title;	/* 제목 */
+	private String pass;	/* 비밀번호 */
+	public String name;		/* 작성자 */
+	public String content;	/* 내용 */
+	public int hits;		/* 조회수 */
+	public String rdate;	/* 작성일 */
 
-	private int viewPage = 1;	// 사용자가 보고 있는 화면페이지
-	private int startIndex = 1;	// 목록화면 페이지 시작번호
-	private int endIndex = 10;	// 목록화면 페이지 끝번호
+	private int viewPage = 1;	/*사용자가 보고 있는 화면페이지 */
+	private int startIndex = 1;	/*목록화면 페이지 시작번호 */
+	private int endIndex = 10;	/*목록화면 페이지 끝번호 */
 	
-	private String searchGubun; // 목록화면-검색기능 콤보박스 옵션
-	private String searchText;	// 목록화면-검색기능 검색내용
+	private String searchGubun;	/*목록화면-검색기능 콤보박스 옵션 */
+	private String searchText;	/*목록화면-검색기능 검색내용 */
 	
 	
 	/*

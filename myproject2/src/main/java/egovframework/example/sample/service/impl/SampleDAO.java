@@ -91,7 +91,7 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @exception Exception
 	 */
 	public List<?> selectSampleList(SampleDefaultVO searchVO) throws Exception {
-		return list("sampleDAO.selectSampleList", searchVO);
+		return (List<?>) list("sampleDAO.selectSampleList", searchVO);
 	}
 
 	/**
@@ -101,7 +101,7 @@ public class SampleDAO extends EgovAbstractDAO {
 	 * @exception
 	 */
 	public int selectSampleListTotCnt(SampleDefaultVO searchVO) {
-		return (Integer) select("sampleDAO.selectSampleListTotCnt", searchVO);
+		return (int) select("sampleDAO.selectSampleListTotCnt", searchVO);
 	}
 
 }

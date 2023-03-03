@@ -24,13 +24,17 @@ body {
 button {
 	font-size:12px;
 }
+a {text-decoration:none;}
 table {
+	border: 1px solid #ffffff;
 	width:600px;
-	boarder-collapse:callapse;
+	border-collapse:collapse;
 }
+tr:hover{background-color: #D6EEEE;}
 th,td {
-	boarder:1px solid #cccccc;
-	padding: 3px;
+	border-bottom: 1px solid #444444;
+	padding:5px;
+	line-height:2;
 }
 .input1 {
 	width:98%;
