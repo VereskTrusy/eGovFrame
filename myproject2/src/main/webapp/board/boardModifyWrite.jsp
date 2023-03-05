@@ -21,9 +21,9 @@
 
 	<!-- CSS 사용 문구 -->
 	<style>
-		body {font-size:9px;}
+		body {font-size:12px;}
 		button {
-			font-size:9px;}
+			font-size:12px;}
 		table {
 			width:600px;
 			border-collapse:callapse;
@@ -95,6 +95,9 @@
 	</script>
 
 	<body>
+		<!-- 탑 메뉴 적용 -->
+		<%@ include file="../include/topmenu.jsp" %>
+		
 		<form id="frm">
 			<input type="hidden" name="unq" value="${boardVO.unq}">
 		

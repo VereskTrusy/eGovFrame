@@ -49,5 +49,11 @@
 		OR		A5	LIKE '%'||#dong#||'%'
 	</select>
 	
-	
+	<!-- 로그인 - 로그인 데이터 확인 -->
+	<select id="memberDAO.selectMemberCount" resultClass="java.lang.Integer">
+		SELECT	COUNT(*)
+		FROM	member
+		WHERE	userid='$userid$'
+		AND		pass='$pass$'
+	</select>
 </sqlMap>

@@ -31,9 +31,20 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectMemberIdCheck(userid);
 	}
 
+	/*
+	 * 회원가입 - 우편번호 검색 
+	*/
 	@Override
 	public List<?> selectPostList(String dong) throws Exception {
 		return memberDAO.selectPostList(dong);
+	}
+
+	/*
+	 * 로그인 - 로그인 데이터 확인
+	 */
+	@Override
+	public int selectMemberCount(MemberVO vo) throws Exception {
+		return memberDAO.selectMemberCount(vo);
 	}
 
 }

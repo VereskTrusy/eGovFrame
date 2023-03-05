@@ -222,19 +222,10 @@
 	</style>
 
 	<body>
+		<!-- 탑 메뉴 적용 -->
+		<%@ include file="../include/topmenu.jsp" %>
+	
 		<form name="frm" id="frm">
-			<!-- 기본 탑메뉴 간단히.. Start -->
-			<table>
-				<tr>
-					<!-- <th width="25%"><a href="/myproject2/">홈</a></th> -->
-					<th width="20%"><a href="/myproject2/boardList.do">게시판</a></th>
-					<th width="20%"><a href="/myproject2/memberWrite.do">회원가입</a></th>
-					<th width="40%"></th>
-					<th width="20%"><a href="/myproject2/loginWrite.do">로그인</a></th>
-				</tr>
-			</table>
-			<!-- 기본 탑메뉴 간단히.. End -->
-			
 			<!-- 회원가입 영역 Start -->
 			<table>
 				<caption>회원가입 폼</caption>
