@@ -22,11 +22,12 @@ button {
 	font-size:9px;
 }
 table {
+	border:1px solid #ffffff;
 	width:600px;
 	border-collapse:callapse;
 }
 th,td {
-	border:1px solid #444444;
+	border:1px solid #ffffff;
 	padding: 3px;
 }
 .input1 {

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!--JSTL 사용을 위한 라이브러리 링크 설정 -->
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
@@ -10,134 +9,133 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>게시판 목록 화면</title>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판 목록 화면</title>
+	</head>
 
-</head>
+	<!-- CSS 사용 문구 -->
+	<style>
+		body {font-size:12px;}
+		button {font-size:12px;}
+		a {text-decoration:none;}
+		table {
+			border: 1px solid #ffffff;
+			width:600px;
+			border-collapse:collapse;
+		}
+		th,td {
+			padding:5px;
+			line-height:2;
+		}
+		.input1 {width:98%;}
+		.textarea {
+			width:98%;
+			height:70px;
+		}
+		.div_ListName {
+			width:600px;
+			text-align:center;
+			font-size:15pt;
+			font-weight:bold;
+			margin-top:10px;
+			margin-bottom:10px;
+			padding-bottom:5px;
+		}
+		.div_Total {
+			width:600px;
+			text-align:left;
+			font-size:8pt;
+		}
+		.div_Search {
+			width:600px;
+			text-align:left;
+			font-size:8pt;
+		}
+		.div_Write {
+			width:600px;
+			text-align:left;
+			font-size:8pt;
+		}
+		.div_List{
+			
+			width:600px;
+			text-align:left;
+			font-size:8pt;
+		}
+	</style>
 
-<!-- CSS 사용 문구 -->
-<style>
-body {
-	font-size:12px;
-}
-button {
-	font-size:12px;
-}
-a {text-decoration:none;}
-table {
-	border: 1px solid #ffffff;
-	width:600px;
-	border-collapse:collapse;
-}
-tr:hover{background-color: #D6EEEE;}
-th,td {
-	border-bottom: 1px solid #444444;
-	padding:5px;
-	line-height:2;
-}
-.input1 {
-	width:98%;
-}
-.textarea {
-	width:98%;
-	height:70px;
-}
-.div1 {
-	width:600px;
-	text-align:center;
-	font-size:15pt;
-	font-weight:bold;
-	margin-top:10px;
-	margin-bottom:10px;
-	padding-bottom:5px;
-}
-.div2 {
-	width:600px;
-	text-align:left;
-	font-size:8pt;
-}
-</style>
-
-<body>
-	<!-- 기본 탑메뉴 간단히.. -->
-	<table>
-		<tr>
-			<th width="25%"><a href="/myproject2/">홈</a></th>
-			<th width="25%"><a href="/myproject2/boardList.do">게시판</a></th>
-			<th width="25%"><a href="/myproject2/memberWrite.do">회원가입</a></th>
-			<th width="25%"><a href="/myproject2/loginWrite.do">로그인</a></th>
-		</tr>
-	</table>
-<div class="div1">게시판 목록</div>
-<!-- controller에서 total개수 받아서 뿌리기 -->
-
-<div class="div2">Total: ${total}</div>
-
-<!-- 검색기능 콤보박스, 입력상자, 검색버튼 -->
-<div class="div2">
-	<form name="searchFrm" method="post" action="boardList.do">
-		<select name="searchGubun" id="searchGubun">
-			<option value="title">제목</option>
-			<option value="name">글쓴이</option>
-			<option value="content">내용</option>
-		</select>
-		<input type="text" name="searchText" id="searchText">
-		<button type="submit">검색</button>
-	</form>
-</div>
-
-<!-- 테이블 열 : 행번호, 제목, 글쓴이, 등록일, 조회수 -->
-<table>
-	<tr>
-		<th width="10%">번호</th>
-		<th width="45%">제목</th>
-		<th width="15%">글쓴이</th>
-		<th width="15%">등록일</th>
-		<th width="15%">조회수</th>
-	</tr>
-	
-	<!-- 행번호 출력을 위해 cnt 변수 선언 -->
-	<c:set var="cnt" value="${rowNumber}"/>
-	
-	<!-- 목록 실제 데이터, jstl 반복문 사용-->
-	<c:forEach var="result" items="${resultList}">
-	
-		<tr align="center">
-			<td><c:out value="${cnt}"/></td>
-			<td align="left">
-				<a href="boardDetail.do?unq=${result.unq}"><c:out value="${result.title}"/></a>
-			</td>
-			<td><c:out value="${result.name}"/></td>
-			<td><c:out value="${result.rdate}"/></td>
-			<td><c:out value="${result.hits}"/></td>
-		</tr>
+	<body>
+		<!-- 기본 탑메뉴 간단히.. -->
+		<table>
+			<tr>
+				<!-- <th width="25%"><a href="/myproject2/">홈</a></th> -->
+				<th width="20%"><a href="/myproject2/boardList.do">게시판</a></th>
+				<th width="40%"><a href="/myproject2/memberWrite.do">회원가입</a></th>
+				<th width="20%"></th>
+				<th width="20%"><a href="/myproject2/loginWrite.do">로그인</a></th>
+			</tr>
+		</table>
 		
-		<!-- cnt 변수 1감소 -->
-		<c:set var="cnt" value="${cnt-1}"/>
+		<div class="div_ListName">게시판 목록</div>
 		
-	</c:forEach>
+		<!-- controller에서 total개수 받아서 뿌리기 -->
+		<div class="div_Total">Total: ${total}</div>
 	
-</table>
-
-<!-- total(데이터총개수), totalPage(페이지개수) 받아서 페이징처리하기 -->
-<div class="div2" style="whidth:600px; margin-top:5px; text-align:center;">
-
-	<c:forEach var="i" begin="1" end="${totalPage}">
+		<!-- 검색기능 콤보박스, 입력상자, 검색버튼 -->
+		<div class="div_Search">
+			<form name="searchFrm" method="post" action="boardList.do">
+				<select name="searchGubun" id="searchGubun">
+					<option value="title">제목</option>
+					<option value="name">글쓴이</option>
+					<option value="content">내용</option>
+				</select>
+				<input type="text" name="searchText" id="searchText">
+				<button type="submit">검색</button>
+			</form>
+		</div>
 	
-	<a href="boardList.do?viewPage=${i}">${i} </a>
+		<!-- 테이블 열 : 행번호, 제목, 글쓴이, 등록일, 조회수 -->
+		<table>
+				<tr>
+					<th width="10%">번호</th>
+					<th width="45%">제목</th>
+					<th width="15%">글쓴이</th>
+					<th width="15%">등록일</th>
+					<th width="15%">조회수</th>
+				</tr>
+				
+				<!-- 행번호 출력을 위해 cnt 변수 선언 -->
+				<c:set var="cnt" value="${rowNumber}"/>
+				
+				<!-- 목록 실제 데이터, jstl 반복문 사용-->
+				<c:forEach var="result" items="${resultList}">
+					<tr align="center">
+						<td><c:out value="${cnt}"/></td>
+						<td align="left">
+							<a href="boardDetail.do?unq=${result.unq}"><c:out value="${result.title}"/></a>
+						</td>
+						<td><c:out value="${result.name}"/></td>
+						<td><c:out value="${result.rdate}"/></td>
+						<td><c:out value="${result.hits}"/></td>
+					</tr>
+					
+					<!-- cnt 변수 1감소 -->
+					<c:set var="cnt" value="${cnt-1}"/>
+				</c:forEach>
+		</table>
 	
-	</c:forEach>
+		<!-- total(데이터총개수), totalPage(페이지개수) 받아서 페이징처리하기 -->
+		<div class="div2" style="whidth:600px; margin-top:5px; text-align:center;">
+			<c:forEach var="i" begin="1" end="${totalPage}">
+				<a href="boardList.do?viewPage=${i}">${i} </a>
+			</c:forEach>
+		</div>
 	
-</div>
-
-<!-- 글쓰기 버튼 -->
-<div class="div2" style="whidth:600px; margin-top:5px; text-align:right;">
-
-	<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
-	
-</div>
-
-</body>
+		<!-- 글쓰기 버튼 -->
+		<div class="div_Write" style="whidth:600px; margin-top:5px; text-align:right;">
+			<button type="button" onclick="location='boardWrite.do'">글쓰기</button>
+		</div>
+	</body>
 
 </html>

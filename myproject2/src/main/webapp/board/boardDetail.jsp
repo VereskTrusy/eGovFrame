@@ -30,10 +30,10 @@ controller에서 받은 boardVO.content데이터의 \n을 <br>로 바꾸고 그 
 <!-- CSS 사용 문구 -->
 <style>
 body {
-	font-size:9px;
+	font-size:12px;
 }
 button {
-	font-size:9px;
+	font-size:12px;
 }
 table {
 	width:600px;

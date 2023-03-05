@@ -6,6 +6,8 @@
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="main.service.MemberVO"/>
 	
+
+	<!-- 회원가입 - 회원등록 처리 -->
 	<insert id="memberDAO.insertMember">
 		INSERT INTO member(
 			userid,
@@ -28,4 +30,24 @@
 			#address#
 		)
 	</insert>
+	
+	
+	<!-- 회원가입 - 아이디 중복체크 -->
+	<select id="memberDAO.selectMemberIdCheck" resultClass="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM	member
+		WHERE	userid='$userid$'
+	</select>
+	
+	
+	<!-- 회원가입 - 우편번호 검색 dong -->
+	<select id="memberDAO.selectPostList" resultClass="egovMap">
+		SELECT	A1
+				AS addr
+		FROM	post
+		WHERE	A4	LIKE '%'||#dong#||'%'
+		OR		A5	LIKE '%'||#dong#||'%'
+	</select>
+	
+	
 </sqlMap>
