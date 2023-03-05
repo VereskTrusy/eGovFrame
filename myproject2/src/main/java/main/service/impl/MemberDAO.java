@@ -25,8 +25,18 @@ public class MemberDAO extends EgovAbstractDAO{
 		return (int) select("memberDAO.selectMemberIdCheck", userid);
 	}
 
+	/*
+	 * 회원가입 - 우편번호 검색 
+	*/
 	public List<?> selectPostList(String dong) {
 		return (List<?>) select("memberDAO.selectPostList", dong);
+	}
+
+	/*
+	 * 로그인 - 로그인 데이터 확인
+	 */
+	public int selectMemberCount(MemberVO vo) {
+		return (int) select("memberDAO.selectMemberCount", vo);
 	}
 
 }
