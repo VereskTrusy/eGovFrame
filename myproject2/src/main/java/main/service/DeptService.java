@@ -1,4 +1,4 @@
-package egovframework.example.sample.service;
+package main.service;
 
 import java.util.List;
 

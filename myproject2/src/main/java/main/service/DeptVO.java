@@ -1,4 +1,4 @@
-package egovframework.example.sample.service;
+package main.service;
 
 public class DeptVO {
 	

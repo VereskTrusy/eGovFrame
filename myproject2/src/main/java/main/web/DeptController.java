@@ -1,4 +1,4 @@
-package egovframework.example.sample.web;
+package main.web;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import egovframework.example.sample.service.DeptService;
-import egovframework.example.sample.service.DeptVO;
+import main.service.DeptService;
+import main.service.DeptVO;
 
 
 @Controller

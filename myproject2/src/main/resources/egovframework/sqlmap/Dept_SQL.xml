@@ -4,7 +4,7 @@
 <sqlMap namespace="deptSpace">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="deptVO" type="egovframework.example.sample.service.DeptVO"/>
+	<typeAlias  alias="deptVO" type="main.service.DeptVO"/>
 
 	<!-- 	
  	<resultMap id="sample" class="egovframework.example.sample.service.DeptVO">
