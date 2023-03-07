@@ -43,7 +43,10 @@
             </props>
         </property>
     </bean>
-
+	<!-- 
+	p:prefix="/"	-> jsp파일 경로 설정
+	p:suffix=".jsp"	-> 확장자명 설정
+	 -->
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
 	    p:prefix="/" p:suffix=".jsp"/>
