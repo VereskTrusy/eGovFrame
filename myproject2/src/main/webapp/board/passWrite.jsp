@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%> 
 <!--JSTL 사용을 위한 라이브러리 링크 설정 -->
 <%@ taglib prefix="c"		uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,12 +10,14 @@
 		<meta charset="UTF-8">
 		<title>게시판 삭제 - 암호입력화면</title>
 		
+		<!-- 외부 CSS 파일 경로 링크 -->
+		<link rel="stylesheet" href="/css/board.css">
+		
 		<!-- Jquery를 사용하기위한 jscript 파일 연결 (jquery도 javascript의 일종임-->
 		<script src="/myproject2/script/jquery-1.12.4.js"></script>
 		<script src="/myproject2/script/jquery-ur.js"></script>
-	</head>
-
-	<script>
+		
+		<script>
 		/* jquery문법의 시작이다 알리는 형태*/
 		$(function() {
 			/* 버튼 클릭시 */
@@ -57,9 +58,8 @@
 			});
 		});
 	</script>
-
-	<!-- CSS 구성 -->
-
+	</head>
+	
 	<body>
 		<!-- 암호입력 상자, 데이터 전송 ajax형태로 전송 -->
 		<table>

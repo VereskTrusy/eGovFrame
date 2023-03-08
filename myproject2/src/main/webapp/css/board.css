@@ -1,0 +1,80 @@
+
+<!-- CSS 디자인 설정 -->
+
+body {
+	margin:0; 
+	padding:0;
+}
+a {
+	text-decoration:none;
+}
+table {
+	width:800px;
+	border: 1px solid #bcbcbc;
+	border-collapse:collapse;
+}
+th, td {
+	border: 1px solid #bcbcbc;
+	padding:5px;
+	line-height:2;
+}
+.div_pageframe {
+	width: 800px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.div_topmenu {
+	width:800px;
+	height:50px;
+	font-size:12px;
+	font-family:"돋움";
+	color:#3A5870;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.div_title {
+	font-size:15pt;
+	font-weight:bold;
+	font-family:"돋움";
+	color:#3A5870;
+	text-decoration:none;
+	margin-top:10px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+	
+}
+.div_Total {
+	font-size:8px;
+	font-family:"돋움";
+	color:#3A5870;
+	text-decoration:none;
+}
+.div_Search {
+	font-size:12px;
+	font-family:"돋움";
+	color:#3A5870;
+	text-decoration:none;
+	margin-bottom:10px;
+}
+.div_content {
+	font-size:12px;
+	font-family:"돋움";
+	color:#3A5870;
+	text-decoration:none;
+	margin: 5 5 5 5;
+	padding: 5 5 5 5;
+}
+.div_PageNum {
+	font-size:12px;
+	font-family:"돋움";
+	color:#3A5870;
+	text-decoration:none;
+	whidth:600px;
+	margin-top:5px;
+	text-align:center;
+}
+.div_bottom {
+	whidth:600px;
+	margin-top:5px;
+	text-align:right;
+}
