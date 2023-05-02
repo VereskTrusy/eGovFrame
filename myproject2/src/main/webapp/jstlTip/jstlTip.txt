@@ -1,0 +1,41 @@
+1. JSTL 비교 연산자
+     연산자               : 의미 
+    eq          : 같다 equal
+    ne          : 같지 않다 not equal
+    empty       : 객체 값이 비어있을 경우 true
+    not empty   : 객체 값이 비어있지 않을 경우 true
+    lt          : 작다
+    gt          : 크다
+    le          : 작거나 같다
+    gt          : 크거나 같다
+
+    # 사용법
+    
+    <c:set var="str" value="Hello Java"/>
+    
+    <c:if test="${str eq 'Hello Java'">
+        eq str
+    </c>
+    /myproject2/src/main/webapp/jstlTip/testJSTL.jsp 에 몇몇 실습함
+    
+    
+    
+    
+    <c:forEach> 속성 설명
+    var : 사용할 변수 (필수)
+    items : Collection 객체(List, Map) (필수)
+    begin : 반복 시작 index(기본 값 0)
+    end : 반복 종료
+    step : 반복 시, 증가 폭
+    varStatus : 반복문 돌고 있을 때, 해당 상태를 보여주는 변수
+    
+    varStatus 변수의 속성 설명
+    index : items에 정의한 항목을 가르키는 index (기본값 0)
+    count : 현재 몇 번째 반복인지 반환 (1부터 시작)
+    first : 현재 반복이 첫 번째 반복인지 (boolean형식의 true or false 반환)
+    last : 현재 반복이 마지막 반복인지 (boolean형식의 true or false 반환)
+    
+    
+    
+    
+    
